@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Edit/Add title</h1>
+              <span class="subheading">Edit your post here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <hr>
+  <div class="container">
+    <button><a href="/dashboard">Dashboard home</a></button>
+            <button><a href="/logout">logout</a></button>
+    <form name="sentMessage" id="contactForm" action="/edit/{{post.sno}}" method="post" novalidate  >
+        <div class="container">
+            
+            <h1>ADD Post</h1>
+            <hr>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+             
+            <label>title</label>
+            <input type="text" class="form-control" placeholder="title" id="title" name="title" value="{{post.title}}" required data-validation-required-message="Please enter your name.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>slug</label>
+            <input type="text" class="form-control"  name='slug' placeholder="enter slug" id="slug" required data-validation-required-message="Please enter your phone number." value="{{post.slug}}" >
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Content</label>
+              <textarea rows="5" class="form-control" name='content'value=post.content placeholder="write content  here..." id="content" >{{post.content}}</textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>image file</label>
+              <input type="text" class="form-control" name='imagefile' value="{{post.img_file}}" placeholder="image of post" id="imgfile" required data-validation-required-message="Please enter your phone number.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+            <br>
+        <div id="success"></div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </div>
+        </div>
+      </form>
+    </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+
+

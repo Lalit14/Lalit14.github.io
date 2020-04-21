@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>{{params['blog_name']}}</h1>
+              <span class="subheading">Edit your post here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+  <!-- Add a new post  -->
+ <h1>Add Post</h1>
+<button><a href="edit/0">Add new post</a></button>
+<button><a href="/logout">logout</a></button>
+
+
+<!-- upload file for post  -->
+<hr>
+<h1>Upload file here</h1>
+<form action="/uploader" method="post" enctype="multipart/form-data">
+<input type="file" name="file1">
+<button type="submit">Submit</button>
+<hr>
+</form>
+
+
+    <!-- table starts here -->
+     
+    <h2>HTML Table</h2>
+    
+    <table>
+      <tr>
+        <th>sno</th>
+        <th>title</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      {% for post in posts %}
+      <tr>
+        <th>{{post.sno}}</th>
+        <th>{{post.title}}</th>
+        <th>{{post.date}}</th>
+        <th><a href="/edit/{{post.sno}}"><button>Edit</button></a></th>
+        <th><a href="/delete/{{post.sno}}"><button>Delete</button></a></th>
+      </tr>
+      {% endfor %}
+        </table>
+    
+      </div>    
+<!-- table ends here -->
+          
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+
+
