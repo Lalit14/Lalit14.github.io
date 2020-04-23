@@ -164,7 +164,7 @@ def edit(sno):
                 db.session.commit()
                 return redirect('/edit/'+sno)
         post = Posts.query.filter_by(sno=sno).first()
-        return render_template('title.html', params=params, post=post)
+        return render_template('title.html', params=params, post=post,sno=sno)
 
 
 @app.route("/logout")
